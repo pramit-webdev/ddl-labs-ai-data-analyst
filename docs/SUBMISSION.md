@@ -14,7 +14,7 @@
 
 ## Verification summary
 
-- `pytest -q` — 49 tests passing (unit, integration, API contract and Playwright E2E).
+- `pytest -q` — 51 tests passing (unit, integration, API contract, scripted LLM tool loop and Playwright E2E).
 - Independent oracle `data/expected_metrics.json` matches the SQL path to within cent-level rounding.
 - Browser-verified: overview, period switching, grounded chat, chart generation, quality page, mobile layout.
 - Demo video recorded from the running application with voiceover.

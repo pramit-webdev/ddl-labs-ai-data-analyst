@@ -229,7 +229,7 @@ BASE_URL=http://127.0.0.1:8000 pytest -q -m e2e
 - **Unit / integration:** ingestion vs oracle, analytics, currency formatting, periods, decline decomposition, tool validation, SQL guard, grounding, planner classification, API contracts.
 - **Playwright E2E:** overview rendering, period switching, grounded chat answer, in-chart rendering, quality page, unsupported question and mobile overflow/layout.
 
-The suite covers all 49 tests passing at submission time.
+The suite covers all 51 tests passing at submission time, including a scripted LLM tool-loop test and a grounding-failure fallback test.
 
 ---
 
