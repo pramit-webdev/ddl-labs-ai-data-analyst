@@ -1,0 +1,167 @@
+product_id,name,category,unit_price,unit_cost,launch_date,active
+P0001,"Surya 43"" 4K Smart TV",Electronics,31393.0,13373.5,2023-01-16,true
+P0002,"Surya 55"" QLED Smart TV",Electronics,53179.0,29871.61,2023-05-29,true
+P0003,Anand Mixer Grinder 750W,Electronics,4774.0,2629.45,2022-01-06,true
+P0004,Nimbus Noise-Cancelling Headphones,Electronics,2856.0,1489.2,2023-01-24,true
+P0005,Vayu Air Purifier,Electronics,10063.0,6273.26,2023-07-19,true
+P0006,Chakra Smartwatch S2,Electronics,4717.0,2606.09,2024-10-12,true
+P0007,Tejas Laptop Stand,Electronics,487.0,281.83,2024-01-10,true
+P0008,Vidyut 20000mAh Power Bank,Electronics,1523.0,944.54,2022-09-03,true
+P0009,Rangoli LED Strip 5m,Electronics,3591.0,2033.19,2022-12-25,true
+P0010,Signal Mesh Wi-Fi Router,Electronics,41639.0,23054.18,2023-07-06,true
+P0011,Aero TWS Earbuds,Electronics,3775.0,1776.65,2025-08-13,true
+P0012,"Prism 15"" Laptop Sleeve",Electronics,2688.0,1543.68,2023-04-12,true
+P0013,Cobalt Wireless Mouse,Electronics,1877.0,1192.79,2023-01-20,true
+P0014,Spark Mini Projector,Electronics,47544.0,29794.15,2023-03-22,true
+P0015,Terra 1TB Portable SSD,Electronics,28462.0,18758.43,2022-02-12,true
+P0016,Lumen Smart Desk Lamp,Electronics,3726.0,2045.1,2021-11-14,true
+P0017,Drift Wireless Charger,Electronics,308.0,182.74,2024-08-13,true
+P0018,Circuit HDMI 2.1 Cable,Electronics,1987.0,1235.92,2023-02-10,true
+P0019,Nova Tablet Stand,Electronics,2401.0,1314.03,2022-10-05,true
+P0020,Beacon Smart Plug 4-Pack,Electronics,2959.0,1815.72,2022-12-29,true
+P0021,Surya Pressure Cooker 5L,Home & Kitchen,5887.0,2570.33,2024-12-27,true
+P0022,Anand Wet Grinder 2L,Home & Kitchen,3320.0,1814.85,2023-01-28,true
+P0023,Chaiwala Electric Kettle 1.5L,Home & Kitchen,7703.0,3972.89,2022-08-15,true
+P0024,Rangoli Non-Stick Tawa 28cm,Home & Kitchen,3797.0,1902.83,2023-01-09,true
+P0025,Surya Cast Iron Kadhai 24cm,Home & Kitchen,2470.0,1077.35,2022-09-28,true
+P0026,Rangoli Idli Steamer 4-Tier,Home & Kitchen,1856.0,838.46,2025-05-27,true
+P0027,Masala Dabba Stainless Steel,Home & Kitchen,2627.0,1162.81,2022-09-04,true
+P0028, Roti Maker 900W ,Home & Kitchen,3692.0,2422.69,2022-07-16,true
+P0029,Cotton Bedsheet Set Queen,Home & Kitchen,1765.0,968.47,2023-02-26,true
+P0030,Terra Ceramic Planter,Home & Kitchen,2772.0,1737.28,2023-07-12,true
+P0031,Copper Water Bottle 1L,Home & Kitchen,2006.0,956.32,2022-04-27,true
+P0032,"Sable Chef's Knife 8""",Home & Kitchen,2470.0,1194.61,2024-07-20,true
+P0033,Glow Table Lamp,Home & Kitchen,2066.0,1195.9,2023-02-19,true
+P0034,Willow Serving Board,Home & Kitchen,1583.0,949.03,2022-01-11,true
+P0035,Cloud Cotton Bath Towels,Home & Kitchen,613.0,332.17,2024-01-05,true
+P0036,Haven Bamboo Organizer,,251.0,159.05,2022-01-01,false
+P0037,Stoneware Dinner Set 16-Piece,Home & Kitchen,629.0,311.94,2022-10-15,true
+P0038,Breeze Air Purifier Mini,,404.0,200.34,2024-01-07,false
+P0039,Nesting Mixing Bowls,Home & Kitchen,234.0,128.47,2023-04-19,true
+P0040,Hearth Scented Candle,Home & Kitchen,463.0,211.99,2024-11-25,true
+P0041,Rangoli Cotton Kurta,Fashion,6702.0,3889.08,2023-05-18,true
+P0042,Banarasi Silk Saree,Fashion,3748.0,2071.8,2021-12-21,true
+P0043,Chikankari Kurta Set,Fashion,8969.0,4854.9,2023-07-11,true
+P0044,Kolhapuri Leather Chappals,Fashion,3024.0,1829.73,2022-12-07,true
+P0045,Nehru Jacket,Fashion,6925.0,3094.43,2025-06-26,true
+P0046,Kota Doria Dupatta,Fashion,3538.0,1611.71,2022-10-21,true
+P0047,Salwar Suit Set,Fashion,1639.0,829.13,2023-05-19,true
+P0048,Kanjeevaram Silk Saree,Fashion,4907.0,2943.58,2025-03-02,true
+P0049,Cotton Dhoti,Fashion,4584.0,1952.55,2024-05-19,true
+P0050,Sports Jersey,Fashion,4072.0,1952.77,2023-05-14,true
+P0051,Block Print Cotton Dress,Fashion,1058.0,677.57,2023-01-11,true
+P0052,Leather Mojari Shoes,Fashion,1200.0,523.99,2024-05-28,true
+P0053,Pashmina Shawl,Fashion,1664.0,1073.97,2022-12-08,true
+P0054,Denim Jacket,Fashion,894.0,468.72,2024-05-09,true
+P0055,Cotton Palazzo Pants,,2318.0,1079.3,2022-06-12,false
+P0056,Oxidised Jhumka Earrings,Fashion,803.0,480.25,2022-08-25,true
+P0057,Leather Belt,Fashion,735.0,425.72,2022-10-29,true
+P0058,Canvas Sneakers,Fashion,787.0,435.26,2022-08-09,true
+P0059,Silk Tie,Fashion,510.0,281.27,2022-11-12,true
+P0060,Embroidered Potli Bag,Fashion,525.0,276.17,2022-03-27,true
+P0061,Kumkumadi Facial Serum,Beauty & Personal Care,838.0,369.01,2021-11-22,true
+P0062,Neem Face Wash,,969.0,479.17,2024-02-14,false
+P0063,Bhringraj Hair Oil,Beauty & Personal Care,2198.0,961.58,2021-11-26,true
+P0064,Sandalwood Soap,Beauty & Personal Care,1298.0,591.13,2023-05-15,true
+P0065,Kajal Stick,Beauty & Personal Care,1891.0,1005.05,2023-04-30,true
+P0066,Henna Mehendi Cone,Beauty & Personal Care,1287.0,724.46,2025-08-17,true
+P0067,Aloe Vera Gel,Beauty & Personal Care,726.0,462.93,2023-03-23,true
+P0068,Rose Water Toner,Beauty & Personal Care,546.0,312.88,2024-08-23,true
+P0069,Turmeric Face Pack,Beauty & Personal Care,1013.0,482.47,2022-02-25,true
+P0070,Beard Oil,Beauty & Personal Care,452.0,213.05,2022-09-28,true
+P0071,Vitamin C Face Cream,Beauty & Personal Care,380.0,242.12,2023-08-12,true
+P0072,Ubtan Body Scrub,Beauty & Personal Care,152.0,76.67,2024-07-02,true
+P0073,Lip Balm SPF 15,Beauty & Personal Care,643.0,345.4,2022-04-22,false
+P0074,Amla Shampoo,Beauty & Personal Care,371.0,170.52,2023-04-24,true
+P0075,Coconut Hair Mask,Beauty & Personal Care,475.0,275.08,2022-06-20,true
+P0076,Charcoal Face Mask,Beauty & Personal Care,102.0,50.84,2024-06-12,true
+P0077,Shea Body Butter,Beauty & Personal Care,258.0,137.48,2023-12-27,true
+P0078,Lavender Bath Salts,Beauty & Personal Care,244.0,140.65,2024-04-05,true
+P0079,Under-Eye Cream,Beauty & Personal Care,81.0,47.03,2023-01-21,true
+P0080,Nail Care Kit,Beauty & Personal Care,200.0,130.26,2024-02-22,true
+P0081,Basmati Rice 5kg,Grocery & Staples,1515.0,984.69,2023-02-10,true
+P0082,Whole Wheat Atta 10kg,Grocery & Staples,652.0,394.72,2024-10-03,true
+P0083,Toor Dal 1kg,Grocery & Staples,561.0,307.35,2023-06-23,true
+P0084,Cold-Pressed Groundnut Oil 5L,Grocery & Staples,1732.0,771.31,2025-06-12,true
+P0085,Assam Tea 500g,Grocery & Staples,763.0,416.0,2021-12-10,true
+P0086,Filter Coffee 500g,Grocery & Staples,604.0,359.65,2022-12-24,true
+P0087,Pure Ghee 1kg,Grocery & Staples,470.0,249.82,2022-08-09,true
+P0088,Masala Chai Mix 250g,Grocery & Staples,640.0,323.3,2022-11-19,true
+P0089,Bhujia Namkeen 1kg,Grocery & Staples,306.0,198.15,2022-07-12,true
+P0090,Mango Pickle 500g,Grocery & Staples,751.0,403.89,2024-01-17,true
+P0091,Jaggery 1kg,Grocery & Staples,448.0,227.84,2022-09-14,true
+P0092,Turmeric Powder 500g,Grocery & Staples,465.0,225.53,2023-05-01,true
+P0093,Red Chilli Powder 500g,Grocery & Staples,577.0,337.91,2022-04-24,true
+P0094,Garam Masala 100g,Grocery & Staples,418.0,273.92,2024-04-30,true
+P0095,Poha 1kg,Grocery & Staples,272.0,177.84,2023-04-25,true
+P0096,Moong Dal 1kg,Grocery & Staples,51.0,24.9,2022-09-18,true
+P0097,Sattu 1kg,Grocery & Staples,145.0,89.51,2023-06-18,true
+P0098,Besan 1kg,Grocery & Staples,211.0,136.68,2022-12-21,true
+P0099,Sabudana 500g,Grocery & Staples,207.0,98.15,2022-05-28,true
+P0100,Pistachio Butter 250g,Grocery & Staples,135.0,75.12,2023-05-23,true
+P0101,Kashmir Willow Cricket Bat,Sports & Outdoors,7282.0,3332.93,2023-06-17,true
+P0102,Cricket Leather Ball,Sports & Outdoors,5758.0,2463.47,2022-11-16,true
+P0103,Apex Yoga Mat 6mm,Sports & Outdoors,9390.0,5719.25,2023-02-11,true
+P0104,Badminton Racket Set,Sports & Outdoors,9266.0,5730.02,2023-03-16,true
+P0105,Football Size 5,Sports & Outdoors,9369.0,4922.44,2022-10-25,true
+P0106,Summit Trekking Backpack 40L,Sports & Outdoors,2974.0,1306.5,2022-06-16,true
+P0107,Basecamp 2-Person Tent,Sports & Outdoors,3696.0,2315.63,2023-08-11,true
+P0108,Cyclone Cycling Helmet,Sports & Outdoors,1160.0,697.75,2021-11-03,true
+P0109,Gym Gloves,Sports & Outdoors,2743.0,1688.09,2025-05-01,true
+P0110,Skipping Rope,Sports & Outdoors,4430.0,2211.25,2022-11-10,true
+P0111,Resistance Bands Set,Sports & Outdoors,572.0,252.33,2023-05-06,true
+P0112,Foam Roller,Sports & Outdoors,2475.0,1430.15,2022-07-05,true
+P0113,Trail Running Shoes,Sports & Outdoors,1496.0,787.03,2022-12-02,true
+P0114,Insulated Water Bottle 1L,Sports & Outdoors,1896.0,851.57,2025-06-05,true
+P0115,Carbon Trekking Poles,Sports & Outdoors,526.0,272.42,2023-05-08,true
+P0116,Swim Goggles,Sports & Outdoors,573.0,339.21,2022-11-26,true
+P0117,Compression Socks,Sports & Outdoors,537.0,244.18,2021-12-27,true
+P0118,Trail Running Vest,Sports & Outdoors,384.0,234.09,2022-03-31,true
+P0119,Cricket Batting Gloves,Sports & Outdoors,861.0,481.46,2023-04-02,true
+P0120,Table Tennis Racket Set,Sports & Outdoors,797.0,406.89,2025-08-11,true
+P0121,The Monsoon Diaries,Books & Media,539.0,326.7,2022-05-05,true
+P0122,Chai & Code,Books & Media,797.0,491.73,2025-05-07,true
+P0123,Ayurveda for Modern Life,Books & Media,598.0,265.56,2024-01-21,true
+P0124,The Cricket Chronicles,Books & Media,645.0,372.26,2022-05-09,true
+P0125,Tiffin Tales,Books & Media,637.0,279.82,2022-03-04,true
+P0126,India's Startup Story,Books & Media,603.0,379.51,2023-06-23,true
+P0127,Yoga for Every Day,Books & Media,390.0,172.26,2025-07-14,true
+P0128,The Palace Cookbook,Books & Media,577.0,367.45,2023-07-06,true
+P0129,Bharat: A Photo Journey,Books & Media,511.0,284.03,2024-02-26,true
+P0130,Mindful Mornings,Books & Media,572.0,308.56,2023-01-07,true
+P0131,The Quiet Algorithm,Books & Media,202.0,123.85,2025-06-23,true
+P0132,Salt & Smoke: Indian Kitchen,Books & Media,495.0,243.44,2025-06-26,true
+P0133,Atlas of Small Places,Books & Media,314.0,168.29,2022-01-24,true
+P0134,Midnight Orchard,Books & Media,206.0,127.56,2023-08-24,true
+P0135,The Data Detective,Books & Media,214.0,121.03,2022-11-12,true
+P0136,Field Notes on Design,Books & Media,143.0,66.59,2023-04-14,true
+P0137,A Short History of Chai,Books & Media,161.0,84.65,2023-04-20,true
+P0138,The Art of Clear Thinking,Books & Media,134.0,60.53,2022-08-23,true
+P0139,Wander: India,Books & Media,150.0,92.69,2022-11-03,true
+P0140,The Science of Sleep,Books & Media,292.0,132.5,2025-08-09,true
+P0141,Channapatna Wooden Toys,Toys & Games,4459.0,2469.19,2022-07-24,false
+P0142,Ludo Board Game,Toys & Games,3854.0,2240.57,2021-11-17,true
+P0143,Carrom Board,Toys & Games,1587.0,1003.33,2021-12-16,true
+P0144,Kite Set,Toys & Games,4682.0,2306.01,2023-04-11,true
+P0145,Cricket Set,Toys & Games,1905.0,907.45,2022-07-31,true
+P0146,Mehndi Art Kit,Toys & Games,2407.0,1253.06,2024-02-18,true
+P0147,Puzzle Map of India,Toys & Games,1846.0,1191.36,2022-08-18,true
+P0148,Stunt RC Car,Toys & Games,1416.0,928.08,2021-11-10,true
+P0149,Magnetic Tile Set 60-Piece,Toys & Games,1007.0,627.89,2023-01-27,true
+P0150,Wooden Train Set,Toys & Games,1213.0,546.12,2023-06-23,true
+P0151, Strategy Board Game ,Toys & Games,1131.0,538.27,2024-10-01,false
+P0152,Constellation Projector,Toys & Games,516.0,247.76,2023-08-06,true
+P0153,Mini Chef Play Set,Toys & Games,929.0,393.7,2023-04-25,true
+P0154,Stack & Sort Blocks,Toys & Games,828.0,502.37,2023-05-13,true
+P0155,Ocean Memory Game,Toys & Games,1054.0,672.56,2022-10-28,true
+P0156,Art Studio Kit,Toys & Games,365.0,188.48,2022-04-17,true
+P0157,Science Lab Junior,Toys & Games,294.0,133.95,2021-12-01,true
+P0158,Bubble Machine,Toys & Games,597.0,326.76,2021-12-21,true
+P0159,Music Maker Set,Toys & Games,444.0,280.01,2023-01-24,true
+P0160,Plush Elephant,Toys & Games,521.0,268.68,2024-05-09,true
+P0101,Kashmir Willow Cricket Bat,Sports & Outdoors,7282.0,3332.93,2023-06-17,true
+P0010,Signal Mesh Wi-Fi Router,Electronics,41639.0,23054.18,2023-07-06,true
+P0079,Under-Eye Cream,Beauty & Personal Care,81.0,47.03,2023-01-21,true
+P0087,Pure Ghee 1kg,Grocery & Staples,470.0,249.82,2022-08-09,true
+P0024,Rangoli Non-Stick Tawa 28cm,Home & Kitchen,3797.0,1902.83,2023-01-09,true
+P0005,Vayu Air Purifier,Electronics,10063.0,6273.26,2023-07-19,true

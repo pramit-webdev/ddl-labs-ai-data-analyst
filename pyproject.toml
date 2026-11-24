@@ -1,0 +1,19 @@
+[project]
+name = "atlas-bi"
+version = "1.0.0"
+description = "AI Business Intelligence Agent for e-commerce data"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+markers = [
+    "e2e: browser-level tests (require a running app and Chromium)",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["app"]
+omit = ["app/static/*"]

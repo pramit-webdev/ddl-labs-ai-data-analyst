@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+.mypy_cache/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Runtime data
+data/warehouse.db
+data/warehouse.db-*
+data/*.db
+data/*.db-*
+data/quality_report.json
+data/.ingest.lock
+
+# Test artifacts
+test-results/
+playwright-report/
+docs/demo/*.webm
+docs/demo/*.mp4
+docs/screenshots/*.png
+!docs/screenshots/.gitkeep
+!docs/screenshots/*.png
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,139 @@
+{
+  "seed": 42,
+  "as_of": "2025-09-30",
+  "row_counts": {
+    "customers": 2200,
+    "products": 160,
+    "orders": 12497,
+    "order_items": 23489
+  },
+  "totals": {
+    "revenue": 151007170.57,
+    "orders": 12497,
+    "customers": 1697,
+    "aov": 12083.47,
+    "units": 37859
+  },
+  "latest_month": {
+    "month": "2025-09",
+    "revenue": 5443685.88,
+    "orders": 526,
+    "customers": 311,
+    "aov": 10349.21,
+    "units": 1555
+  },
+  "previous_month": {
+    "month": "2025-08",
+    "revenue": 6515447.81,
+    "orders": 514,
+    "customers": 344,
+    "aov": 12675.97,
+    "units": 1543
+  },
+  "top_product": {
+    "product_id": "P0001",
+    "name": "Surya 43\" 4K Smart TV",
+    "revenue": 37612796.94,
+    "units": 1273
+  },
+  "top_category": {
+    "category": "Electronics",
+    "revenue": 100649684.71
+  },
+  "payment_mix": [
+    {
+      "payment_method": "UPI",
+      "revenue": 85874608.87,
+      "orders": 7072,
+      "share_pct": 56.87
+    },
+    {
+      "payment_method": "Credit Card",
+      "revenue": 23392631.74,
+      "orders": 1975,
+      "share_pct": 15.49
+    },
+    {
+      "payment_method": "Debit Card",
+      "revenue": 15855544.38,
+      "orders": 1320,
+      "share_pct": 10.5
+    },
+    {
+      "payment_method": "Cash on Delivery",
+      "revenue": 13917633.57,
+      "orders": 1113,
+      "share_pct": 9.22
+    },
+    {
+      "payment_method": "Net Banking",
+      "revenue": 6296465.51,
+      "orders": 583,
+      "share_pct": 4.17
+    },
+    {
+      "payment_method": "Wallet",
+      "revenue": 5670286.5,
+      "orders": 434,
+      "share_pct": 3.75
+    }
+  ],
+  "city_tier_mix": [
+    {
+      "city_tier": "Tier 1",
+      "revenue": 90889366.07,
+      "orders": 7423,
+      "customers": 978,
+      "share_pct": 60.19
+    },
+    {
+      "city_tier": "Tier 2",
+      "revenue": 42471216.08,
+      "orders": 3523,
+      "customers": 465,
+      "share_pct": 28.13
+    },
+    {
+      "city_tier": "Tier 3",
+      "revenue": 12266875.6,
+      "orders": 1069,
+      "customers": 167,
+      "share_pct": 8.12
+    },
+    {
+      "city_tier": "International",
+      "revenue": 5379712.82,
+      "orders": 482,
+      "customers": 87,
+      "share_pct": 3.56
+    }
+  ],
+  "inactive_customers_90d": 1120,
+  "never_purchased_customers": 503,
+  "monthly_revenue": {
+    "2023-10": 6373957.17,
+    "2023-11": 8714125.47,
+    "2023-12": 8332583.89,
+    "2024-01": 5561261.54,
+    "2024-02": 5876004.19,
+    "2024-03": 5879547.67,
+    "2024-04": 5764278.47,
+    "2024-05": 6233799.99,
+    "2024-06": 5260088.19,
+    "2024-07": 6150333.32,
+    "2024-08": 5533937.26,
+    "2024-09": 5650512.22,
+    "2024-10": 7478237.24,
+    "2024-11": 8412314.66,
+    "2024-12": 6346255.04,
+    "2025-01": 5976051.47,
+    "2025-02": 6706495.99,
+    "2025-03": 6623594.4,
+    "2025-04": 6243071.84,
+    "2025-05": 6083287.52,
+    "2025-06": 4904016.6,
+    "2025-07": 4944282.74,
+    "2025-08": 6515447.81,
+    "2025-09": 5443685.88
+  }
+}

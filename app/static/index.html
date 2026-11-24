@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Atlas BI — an AI business analyst for BharatCart Retail, an Indian e-commerce company." />
+  <meta name="theme-color" content="#0b1f1c" />
+  <title>Atlas BI · AI Business Analyst</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M7 23.5 16 6l9 17.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M11.2 18h9.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="16" cy="6" r="2.2" fill="currentColor"/></svg>
+        </div>
+        <div>
+          <div class="brand-name">Atlas<span>BI</span></div>
+          <div class="brand-sub">BharatCart Retail</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Sections">
+        <a class="nav-link active" href="#overview" data-page="overview">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z"/></svg>
+          <span>Overview</span>
+        </a>
+        <a class="nav-link" href="#ask" data-page="ask">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-9 9c0 1.6.4 3 1.2 4.3L3 21l4.9-1.1A9 9 0 1 0 12 3Zm-1 13.2v-1.7h1.9v1.7H11Zm2.1-4.1c0 .9-.5 1.4-1.2 1.9-.6.4-.8.7-.8 1.2H9.3c0-1.1.4-1.7 1.3-2.3.6-.4.9-.7.9-1.2 0-.6-.5-1-1.2-1-.7 0-1.2.4-1.5 1.1L7 11.2C7.5 9.9 8.7 9 10.4 9c1.7 0 2.8 1 2.8 2.4Z"/></svg>
+          <span>Ask Atlas</span>
+          <span class="nav-badge">AI</span>
+        </a>
+        <a class="nav-link" href="#quality" data-page="quality">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Zm-1.2 14.2-3.5-3.5 1.5-1.5 2 2 5-5 1.5 1.5-6.5 6.5Z"/></svg>
+          <span>Data quality</span>
+        </a>
+        <a class="nav-link" href="#about" data-page="about">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z"/></svg>
+          <span>About</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="status-card">
+          <div class="status-row">
+            <span class="status-dot" id="status-dot"></span>
+            <span id="llm-status">Checking…</span>
+          </div>
+          <div class="status-meta" id="as-of-status">Data as of —</div>
+        </div>
+        <p class="sidebar-note">Grounded in the warehouse.<br />Every number is traceable.</p>
+      </div>
+    </aside>
+
+    <div class="app-main">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="topbar-title" id="topbar-title">Overview</div>
+        <div class="topbar-actions">
+          <label class="period-control">
+            <span>Period</span>
+            <select id="period-select" aria-label="Reporting period"></select>
+          </label>
+          <button class="button button-ghost" id="refresh-button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Refresh
+          </button>
+          <button class="button button-primary" id="ask-shortcut">Ask Atlas</button>
+        </div>
+      </header>
+
+      <main id="main" tabindex="-1">
+        <!-- ============================= OVERVIEW ============================= -->
+        <section class="page active" id="page-overview" aria-labelledby="overview-title">
+          <div class="hero">
+            <div>
+              <p class="eyebrow">India · D2C commerce · September 2025 snapshot</p>
+              <h1 id="overview-title">Namaste. Here is the business.</h1>
+              <p class="hero-sub" id="overview-subtitle">Loading the latest warehouse snapshot…</p>
+            </div>
+            <div class="hero-side">
+              <div class="hero-badge" id="hero-badge">Data as of —</div>
+              <div class="hero-badge hero-badge-muted" id="hero-llm">Analyst mode —</div>
+            </div>
+          </div>
+
+          <div class="insight-banner" id="insight-banner" role="status">
+            <div class="insight-icon" aria-hidden="true">✦</div>
+            <div>
+              <div class="insight-label">Atlas take</div>
+              <p id="insight-text">Loading the latest signal…</p>
+            </div>
+            <button class="button button-small" id="insight-ask">Investigate</button>
+          </div>
+
+          <div class="kpi-grid" id="kpi-grid" aria-label="Headline metrics">
+            <article class="kpi-card skeleton-card"><div class="skeleton line short"></div><div class="skeleton line big"></div><div class="skeleton line"></div></article>
+            <article class="kpi-card skeleton-card"><div class="skeleton line short"></div><div class="skeleton line big"></div><div class="skeleton line"></div></article>
+            <article class="kpi-card skeleton-card"><div class="skeleton line short"></div><div class="skeleton line big"></div><div class="skeleton line"></div></article>
+            <article class="kpi-card skeleton-card"><div class="skeleton line short"></div><div class="skeleton line big"></div><div class="skeleton line"></div></article>
+          </div>
+
+          <div class="section-head">
+            <div>
+              <h2>Revenue pulse</h2>
+              <p id="revenue-pulse-sub">Monthly net revenue, completed orders only.</p>
+            </div>
+            <div class="chart-legend-note">₹ INR · net of line discounts</div>
+          </div>
+
+          <div class="chart-grid">
+            <article class="card chart-card chart-wide">
+              <div class="card-head">
+                <div>
+                  <h3>Monthly revenue</h3>
+                  <p>Completed orders · shipping excluded</p>
+                </div>
+                <span class="chip chip-soft" id="monthly-range">Last 12 months</span>
+              </div>
+              <div class="chart-wrap chart-tall"><canvas id="chart-monthly" aria-label="Monthly revenue chart" role="img"></canvas></div>
+            </article>
+
+            <article class="card chart-card">
+              <div class="card-head">
+                <div>
+                  <h3>Revenue by category</h3>
+                  <p>Where the money comes from</p>
+                </div>
+              </div>
+              <div class="chart-wrap"><canvas id="chart-category" aria-label="Revenue by category chart" role="img"></canvas></div>
+            </article>
+
+            <article class="card chart-card">
+              <div class="card-head">
+                <div>
+                  <h3>Payment mix</h3>
+                  <p>How India pays</p>
+                </div>
+              </div>
+              <div class="chart-wrap"><canvas id="chart-payment" aria-label="Payment method mix chart" role="img"></canvas></div>
+            </article>
+
+            <article class="card chart-card">
+              <div class="card-head">
+                <div>
+                  <h3>City-tier mix</h3>
+                  <p>Tier 1 vs the Bharat opportunity</p>
+                </div>
+              </div>
+              <div class="chart-wrap"><canvas id="chart-tier" aria-label="Revenue by city tier chart" role="img"></canvas></div>
+            </article>
+
+            <article class="card chart-card">
+              <div class="card-head">
+                <div>
+                  <h3>New vs returning customers</h3>
+                  <p>Monthly purchasing customers</p>
+                </div>
+              </div>
+              <div class="chart-wrap"><canvas id="chart-customers" aria-label="New versus returning customers chart" role="img"></canvas></div>
+            </article>
+          </div>
+
+          <div class="section-head">
+            <div>
+              <h2>What is moving</h2>
+              <p>The products, states and customer signals behind the headline.</p>
+            </div>
+          </div>
+
+          <div class="split-grid">
+            <article class="card">
+              <div class="card-head">
+                <div>
+                  <h3>Top products</h3>
+                  <p>By net revenue in the selected period</p>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="top-products-table">
+                  <thead><tr><th>#</th><th>Product</th><th>Category</th><th class="num">Revenue</th><th class="num">Units</th></tr></thead>
+                  <tbody><tr><td colspan="5" class="empty-cell">Loading…</td></tr></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <div>
+                  <h3>Top states</h3>
+                  <p>Revenue by Indian state</p>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="top-states-table">
+                  <thead><tr><th>#</th><th>State</th><th class="num">Revenue</th><th class="num">Orders</th></tr></thead>
+                  <tbody><tr><td colspan="4" class="empty-cell">Loading…</td></tr></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+
+          <div class="split-grid">
+            <article class="card">
+              <div class="card-head">
+                <div>
+                  <h3>Latest month deep dive</h3>
+                  <p id="decline-sub">Why did revenue move?</p>
+                </div>
+                <button class="button button-small" id="decline-ask">Ask why</button>
+              </div>
+              <div id="decline-summary" class="narrative">
+                <p class="muted">Loading the multi-step decline analysis…</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <div>
+                  <h3>Customer health</h3>
+                  <p>Repeat, active and lapsed customers</p>
+                </div>
+              </div>
+              <div class="customer-health" id="customer-health">
+                <div class="skeleton line big"></div><div class="skeleton line"></div><div class="skeleton line"></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="section-head">
+            <div>
+              <h2>Atlas insights</h2>
+              <p>Rule-based signals generated from the same verified metrics.</p>
+            </div>
+          </div>
+          <div class="insight-grid" id="insight-grid"></div>
+        </section>
+
+        <!-- ============================= ASK ============================= -->
+        <section class="page" id="page-ask" aria-labelledby="ask-title">
+          <div class="ask-layout">
+            <div class="ask-main card">
+              <div class="ask-head">
+                <div class="ask-avatar" aria-hidden="true">✦</div>
+                <div>
+                  <h1 id="ask-title">Ask Atlas</h1>
+                  <p>Questions are answered from the warehouse using controlled tools. No invented numbers.</p>
+                </div>
+                <span class="chip chip-soft" id="ask-mode-chip">Analyst mode</span>
+              </div>
+
+              <div class="chat" id="chat" aria-live="polite">
+                <div class="message assistant">
+                  <div class="message-avatar">A</div>
+                  <div class="message-body">
+                    <div class="message-meta">Atlas · business analyst</div>
+                    <div class="message-content">
+                      <p>Namaste. I can analyse revenue, orders, customers, products, payments, city tiers and the festive calendar for BharatCart Retail.</p>
+                      <p>Try a question below, or ask <strong>“Why did revenue decline last month?”</strong> for the full multi-step diagnosis.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="suggestions" id="suggestions" aria-label="Suggested questions"></div>
+
+              <form class="composer" id="ask-form">
+                <label class="sr-only" for="ask-input">Ask a business question</label>
+                <textarea id="ask-input" rows="2" maxlength="600" placeholder="Ask about revenue, customers, products, UPI, city tiers or the festive season…"></textarea>
+                <div class="composer-actions">
+                  <span class="composer-hint" id="composer-hint">Enter to send · Shift + Enter for a new line</span>
+                  <button class="button button-primary" type="submit" id="ask-submit">
+                    <span>Ask Atlas</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 16-8-5 8 5 8-16-8Z" fill="currentColor"/></svg>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <aside class="ask-side">
+              <div class="card side-card">
+                <h3>How this works</h3>
+                <ol class="steps">
+                  <li><span>01</span> Atlas classifies the question and picks a controlled tool.</li>
+                  <li><span>02</span> The tool queries SQLite and returns a verified result.</li>
+                  <li><span>03</span> The answer is checked against those numbers before it is shown.</li>
+                </ol>
+              </div>
+              <div class="card side-card">
+                <h3>Coverage</h3>
+                <div class="coverage-list">
+                  <span>Revenue &amp; orders</span><span>Monthly trends</span><span>Categories</span>
+                  <span>Products</span><span>Customers</span><span>UPI &amp; COD</span>
+                  <span>City tiers</span><span>States</span><span>Festive context</span>
+                </div>
+              </div>
+              <div class="card side-card side-card-warn">
+                <h3>Out of scope</h3>
+                <p>Forecasts, profit, inventory, competitor data and external market events are not in this warehouse. Atlas will say so rather than guess.</p>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- ============================= QUALITY ============================= -->
+        <section class="page" id="page-quality" aria-labelledby="quality-title">
+          <div class="hero compact">
+            <div>
+              <p class="eyebrow">Trust layer</p>
+              <h1 id="quality-title">Data quality</h1>
+              <p class="hero-sub">Every raw row is accounted for. Cleaning is deterministic and auditable.</p>
+            </div>
+            <div class="hero-side"><div class="hero-badge" id="quality-badge">Loading…</div></div>
+          </div>
+
+          <div class="kpi-grid quality-kpis" id="quality-kpis">
+            <article class="kpi-card skeleton-card"><div class="skeleton line short"></div><div class="skeleton line big"></div></article>
+            <article class="kpi-card skeleton-card"><div class="skeleton line short"></div><div class="skeleton line big"></div></article>
+            <article class="kpi-card skeleton-card"><div class="skeleton line short"></div><div class="skeleton line big"></div></article>
+            <article class="kpi-card skeleton-card"><div class="skeleton line short"></div><div class="skeleton line big"></div></article>
+          </div>
+
+          <div class="split-grid">
+            <article class="card">
+              <div class="card-head"><div><h3>Raw vs clean</h3><p>Rows retained after validation</p></div></div>
+              <div class="table-wrap">
+                <table class="data-table" id="counts-table">
+                  <thead><tr><th>Entity</th><th class="num">Raw</th><th class="num">Clean</th><th class="num">Retained</th></tr></thead>
+                  <tbody><tr><td colspan="4" class="empty-cell">Loading…</td></tr></tbody>
+                </table>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-head"><div><h3>Validation checks</h3><p>Database-level guarantees</p></div></div>
+              <div id="checks-list" class="check-list"><p class="muted">Loading…</p></div>
+            </article>
+          </div>
+
+          <article class="card">
+            <div class="card-head"><div><h3>Issues repaired</h3><p>Counts are raw rows affected, not unique records</p></div></div>
+            <div class="table-wrap">
+              <table class="data-table" id="issues-table">
+                <thead><tr><th>Issue</th><th>Table</th><th>Action</th><th class="num">Rows</th><th>Severity</th></tr></thead>
+                <tbody><tr><td colspan="5" class="empty-cell">Loading…</td></tr></tbody>
+              </table>
+            </div>
+          </article>
+
+          <div class="split-grid">
+            <article class="card prose-card">
+              <h3>Revenue definition</h3>
+              <p id="revenue-definition">—</p>
+            </article>
+            <article class="card prose-card">
+              <h3>Currency definition</h3>
+              <p id="currency-definition">—</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- ============================= ABOUT ============================= -->
+        <section class="page" id="page-about" aria-labelledby="about-title">
+          <div class="hero compact">
+            <div>
+              <p class="eyebrow">Built for DDL Labs</p>
+              <h1 id="about-title">An analyst, not a chatbot.</h1>
+              <p class="hero-sub">Atlas BI is a full-stack AI business intelligence agent for an Indian e-commerce retailer.</p>
+            </div>
+          </div>
+
+          <div class="about-grid">
+            <article class="card prose-card">
+              <h3>What it does</h3>
+              <p>Atlas turns a messy e-commerce export into a clean SQLite warehouse, then lets a business user ask questions in plain English. Answers are grounded in real queries, charts are generated from the same data, and every numeric claim is validated before it reaches the screen.</p>
+              <ul>
+                <li>Sales, customer and product analytics</li>
+                <li>Multi-step revenue-decline diagnosis</li>
+                <li>Indian payment, city-tier and state views</li>
+                <li>Festive-calendar context for September softness</li>
+                <li>Data-quality report and deterministic rebuild</li>
+              </ul>
+            </article>
+            <article class="card prose-card">
+              <h3>Architecture</h3>
+              <div class="arch">
+                <div class="arch-row"><span>Raw CSVs</span><span>→</span><span>Cleaning pipeline</span></div>
+                <div class="arch-row"><span>SQLite warehouse</span><span>→</span><span>Analytics service</span></div>
+                <div class="arch-row"><span>Controlled tools</span><span>→</span><span>LLM / deterministic planner</span></div>
+                <div class="arch-row"><span>Grounding check</span><span>→</span><span>Dashboard &amp; chat</span></div>
+              </div>
+              <p class="muted">FastAPI · SQLite · vanilla JS · Chart.js · OpenAI-compatible tool calling.</p>
+            </article>
+            <article class="card prose-card">
+              <h3>Guardrails</h3>
+              <ul>
+                <li>Read-only SQL with an allow-list and a 2-second limit</li>
+                <li>Purpose-built tools for every core business question</li>
+                <li>Numeric grounding check on every answer</li>
+                <li>Deterministic fallback if the LLM is down or ungrounded</li>
+                <li>No secrets in the repository; keys live in <code>.env</code></li>
+              </ul>
+            </article>
+            <article class="card prose-card">
+              <h3>Honest limitations</h3>
+              <ul>
+                <li>The dataset is a deterministic synthetic snapshot, not real company data.</li>
+                <li>Revenue excludes shipping and taxes; profit and inventory are out of scope.</li>
+                <li>Forecasting, external benchmarks and competitor analysis are intentionally unsupported.</li>
+                <li>The demo is anchored to the latest warehouse date, not the wall clock.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="footer-note">
+            <span>Atlas BI · BharatCart Retail</span>
+            <span>Built with FastAPI, SQLite and a grounded tool-calling loop.</span>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/static/vendor/chart.umd.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
