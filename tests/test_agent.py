@@ -5,6 +5,7 @@ from __future__ import annotations
 import pytest
 
 from app.agent.grounding import extract_answer_numbers, validate_answer
+from app.agent.llm import LLMResponse, ToolCall
 from app.agent.orchestrator import AgentOrchestrator
 from app.agent.planner import classify
 from app.agent.query_guard import SafeQueryError, run_safe_query, validate_sql
@@ -120,3 +121,63 @@ def test_chart_question_produces_chart(analytics: AnalyticsService):
     assert result.chart is not None
     assert result.chart["type"] == "bar"
     assert result.chart["labels"]
+
+
+class FakeLLM:
+    """Scripted OpenAI-compatible client for exercising the tool loop."""
+
+    def __init__(self, responses):
+        self.responses = list(responses)
+        self.calls = []
+
+    @property
+    def configured(self):
+        return True
+
+    def chat(self, messages, **kwargs):
+        self.calls.append({"messages": messages, "kwargs": kwargs})
+        response = self.responses.pop(0)
+        return response
+
+
+def test_llm_tool_loop_succeeds_with_grounded_answer(analytics: AnalyticsService):
+    tool_call = ToolCall(
+        id="call_1",
+        name="get_sales_metrics",
+        arguments={"period": "latest_month"},
+        raw_arguments='{"period":"latest_month"}',
+    )
+    fake = FakeLLM([
+        LLMResponse(content="", tool_calls=[tool_call], model="fake-model"),
+        LLMResponse(content="Latest month revenue was ₹54,43,685.86 across 526 orders.", tool_calls=[], model="fake-model"),
+    ])
+    result = AgentOrchestrator(analytics=analytics, llm=fake).ask("How did last month perform?")
+    assert result.mode == "llm"
+    assert result.supported
+    assert result.grounding["status"] == "verified"
+    assert result.tool_trace[0]["name"] == "get_sales_metrics"
+    assert len(fake.calls) == 2
+    assert fake.calls[0]["kwargs"]["tools"]
+    assert any(m.get("role") == "tool" for m in fake.calls[1]["messages"])
+
+
+def test_ungrounded_llm_answer_falls_back(analytics: AnalyticsService):
+    tool_call = ToolCall(
+        id="call_1",
+        name="get_sales_metrics",
+        arguments={"period": "latest_month"},
+        raw_arguments='{"period":"latest_month"}',
+    )
+    fake = FakeLLM([
+        LLMResponse(content="", tool_calls=[tool_call], model="fake-model"),
+        LLMResponse(content="Revenue was ₹99,99,999.00.", tool_calls=[], model="fake-model"),
+        LLMResponse(content="Revenue was ₹99,99,999.00.", tool_calls=[], model="fake-model"),
+        LLMResponse(content="Revenue was ₹99,99,999.00.", tool_calls=[], model="fake-model"),
+        LLMResponse(content="Revenue was ₹99,99,999.00.", tool_calls=[], model="fake-model"),
+        LLMResponse(content="Revenue was ₹99,99,999.00.", tool_calls=[], model="fake-model"),
+    ])
+    result = AgentOrchestrator(analytics=analytics, llm=fake).ask("What was last month revenue?")
+    assert result.mode == "fallback"
+    assert result.notice
+    assert result.grounding["status"] == "verified"
+    assert "₹99,99,999" not in result.answer
