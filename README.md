@@ -251,7 +251,7 @@ The suite covers all 49 tests passing at submission time.
 
 ## 10. Demo video
 
-**Watch the demo:** [DEMO_VIDEO_URL]
+**Watch the demo:** [Atlas BI demo video (MP4, 66s)](https://github.com/pramit-webdev/ddl-labs-ai-data-analyst/releases/download/demo-v1/demo.mp4)
 
 The recording shows the running application: overview dashboard, period switching, the "Why did revenue decline last month?" journey, a chart request, and the data-quality page.
 
