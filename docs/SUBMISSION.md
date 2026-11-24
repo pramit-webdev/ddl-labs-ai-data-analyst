@@ -6,6 +6,7 @@
 |---|---|
 | Candidate Name | Pramit Das |
 | GitHub Repository | https://github.com/pramit-webdev/ddl-labs-ai-data-analyst |
+| Live Deployment | https://atlas-bi.onrender.com |
 | Demo Video | https://github.com/pramit-webdev/ddl-labs-ai-data-analyst/releases/download/demo-v1/demo.mp4 |
 | LLM Used | Groq `qwen/qwen3.8-27b` via OpenAI-compatible tool calling. Live tool calling and numeric grounding verified against the real API. Automatic deterministic fallback when no key is configured. |
 | Database Used | SQLite — `data/warehouse.db`, built from committed raw CSVs by `app/ingest.py` |

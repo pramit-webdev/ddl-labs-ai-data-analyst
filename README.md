@@ -4,6 +4,8 @@
 
 **Candidate:** Pramit Das · **Assignment:** DDL Labs Technical Assignment · **Repository:** `github.com/pramit-webdev/ddl-labs-ai-data-analyst`
 
+**Live demo:** https://atlas-bi.onrender.com (Render free tier — first request after sleep may take a few seconds)
+
 ---
 
 ## 1. What this product does
@@ -282,6 +284,8 @@ Yes — the app is designed to run on a free tier. It needs no build step, no pa
 3. In the dashboard, set the secret `LLM_API_KEY=gsk_...` (never commit it).
 4. Deploy. Render exposes `PORT`, and the start command rebuilds the warehouse before launching Uvicorn.
 5. Health check: `/api/health`.
+
+This project is already deployed at **https://atlas-bi.onrender.com** using this configuration.
 
 ### Option B — Hugging Face Spaces (Docker SDK)
 
