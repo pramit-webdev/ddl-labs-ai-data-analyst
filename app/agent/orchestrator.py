@@ -21,7 +21,7 @@ from app.agent.tools import ToolOutcome, ToolRegistry
 from app.analytics import AnalyticsService, money, num
 from app.config import Settings, settings
 
-SYSTEM_PROMPT = """You are Atlas, the AI business analyst for BharatCart Retail, an Indian e-commerce company. Reporting anchor: {as_of}. All periods are relative to that date, not the wall clock.
+SYSTEM_PROMPT = """You are Atlas, the AI business analyst for BharatCart Retail, an Indian e-commerce company. Reporting anchor: {as_of}. All periods are relative to that date, not the wall clock. "Last month" and "latest month" always mean the most recent completed month present in the warehouse ({latest_month}), never the calendar month before the as-of date.
 
 Money is Indian Rupees (₹). Revenue = net product revenue from completed orders: quantity × unit_price × (1 − discount%). Shipping and taxes are excluded; cancelled, returned and pending orders are excluded. Indian calendar: October-November is the Diwali peak, September is the pre-festive Shradh lull, June-July is monsoon.
 
@@ -131,7 +131,10 @@ class AgentOrchestrator:
     # LLM path
     # ------------------------------------------------------------------
     def _llm_loop(self, question: str) -> AgentResult:
-        system = SYSTEM_PROMPT.format(as_of=self.analytics.as_of.isoformat())
+        system = SYSTEM_PROMPT.format(
+            as_of=self.analytics.as_of.isoformat(),
+            latest_month=self.analytics.as_of.strftime("%Y-%m"),
+        )
         messages: list[dict[str, Any]] = [
             {"role": "system", "content": system},
             {"role": "user", "content": question},
