@@ -4,7 +4,13 @@ from __future__ import annotations
 
 from fastapi.testclient import TestClient
 
+from app import main
+from app.agent.orchestrator import AgentOrchestrator
+from app.config import Settings
 from app.main import app
+
+# Keep API contract tests deterministic regardless of a local .env key.
+main.agent = AgentOrchestrator(cfg=Settings(llm_provider="offline"))
 
 client = TestClient(app)
 

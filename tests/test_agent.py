@@ -11,6 +11,9 @@ from app.agent.planner import classify
 from app.agent.query_guard import SafeQueryError, run_safe_query, validate_sql
 from app.agent.tools import ToolRegistry
 from app.analytics import AnalyticsService
+from app.config import Settings
+
+OFFLINE = Settings(llm_provider="offline")
 
 
 def test_grounding_accepts_tool_figures():
@@ -97,7 +100,7 @@ def test_planner_classifies_key_questions():
 
 
 def test_offline_agent_answer_is_supported_and_verified(analytics: AnalyticsService):
-    agent = AgentOrchestrator(analytics=analytics)
+    agent = AgentOrchestrator(analytics=analytics, cfg=OFFLINE)
     result = agent.ask("Why did revenue decline last month?")
     assert result.mode == "offline"
     assert result.supported
@@ -108,7 +111,7 @@ def test_offline_agent_answer_is_supported_and_verified(analytics: AnalyticsServ
 
 
 def test_offline_agent_handles_unsupported_question(analytics: AnalyticsService):
-    agent = AgentOrchestrator(analytics=analytics)
+    agent = AgentOrchestrator(analytics=analytics, cfg=OFFLINE)
     result = agent.ask("Predict next year's revenue.")
     assert not result.supported
     assert "can't answer" in result.answer.lower()
@@ -116,7 +119,7 @@ def test_offline_agent_handles_unsupported_question(analytics: AnalyticsService)
 
 
 def test_chart_question_produces_chart(analytics: AnalyticsService):
-    agent = AgentOrchestrator(analytics=analytics)
+    agent = AgentOrchestrator(analytics=analytics, cfg=OFFLINE)
     result = agent.ask("Generate a chart of revenue by category")
     assert result.chart is not None
     assert result.chart["type"] == "bar"
