@@ -271,7 +271,45 @@ The recording shows the running application with the **live Groq tool-calling pa
 
 ---
 
-## 12. Honest limitations
+## 12. Free deployment
+
+Yes — the app is designed to run on a free tier. It needs no build step, no paid database and no persistent disk: the SQLite warehouse is rebuilt from committed CSVs on every cold start.
+
+### Option A — Render (simplest)
+
+1. Push this repo to GitHub (already done).
+2. Create a **Render → Web Service** and connect the repo. Render reads `render.yaml` automatically.
+3. In the dashboard, set the secret `LLM_API_KEY=gsk_...` (never commit it).
+4. Deploy. Render exposes `PORT`, and the start command rebuilds the warehouse before launching Uvicorn.
+5. Health check: `/api/health`.
+
+### Option B — Hugging Face Spaces (Docker SDK)
+
+1. Create a new **Space → Docker → Public**.
+2. Add a Space **Secret** named `LLM_API_KEY`.
+3. Optionally set `LLM_PROVIDER=groq` and `LLM_MODEL=qwen/qwen3.8-27b` as Space variables.
+4. Push this repo to the Space. The included `Dockerfile` exposes port `7860`.
+
+### Option C — any Python PaaS / VPS
+
+```bash
+pip install -r requirements.txt
+python -m app.ingest
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+Set `LLM_API_KEY` in the platform's secret manager. `HOST` and `PORT` are read from the environment.
+
+### Free-tier caveats
+
+- Free instances usually **sleep after inactivity**; the first request after a cold start can take a few seconds while the warehouse rebuilds.
+- Do not expect a persistent database — none is required.
+- LLM rate limits still apply; the app falls back to the verified deterministic analyst if the provider is unavailable or throttled.
+- Free-tier quotas change; check the provider's current terms before relying on them for production.
+
+---
+
+## 13. Honest limitations
 
 - The data is a deterministic **synthetic** dataset created for this assignment, not real company data.
 - Profitability, inventory, returns cost and external market data are not in scope.
@@ -281,7 +319,7 @@ The recording shows the running application with the **live Groq tool-calling pa
 
 ---
 
-## 13. Security notes
+## 14. Security notes
 
 - No secrets are committed; `.env` is gitignored and `.env.example` contains only placeholders.
 - The LLM only receives tool schemas and tool results — never raw database credentials.

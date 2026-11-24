@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+.git
+.gitignore
+__pycache__
+*.py[cod]
+.pytest_cache
+.venv
+venv
+test-results
+playwright-report
+data/warehouse.db
+data/warehouse.db-*
+data/quality_report.json
+docs/demo/*.mp4
+docs/demo/*.webm
