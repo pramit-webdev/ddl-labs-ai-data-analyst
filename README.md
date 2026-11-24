@@ -251,9 +251,9 @@ The suite covers all 51 tests passing at submission time, including a scripted L
 
 ## 10. Demo video
 
-**Watch the demo:** [Atlas BI demo video (MP4, 66s)](https://github.com/pramit-webdev/ddl-labs-ai-data-analyst/releases/download/demo-v1/demo.mp4)
+**Watch the demo:** [Atlas BI demo video (MP4, 68s)](https://github.com/pramit-webdev/ddl-labs-ai-data-analyst/releases/download/demo-v1/demo.mp4)
 
-The recording shows the running application: overview dashboard, period switching, the "Why did revenue decline last month?" journey, a chart request, and the data-quality page.
+The recording shows the running application with the **live Groq tool-calling path**: overview dashboard, period switching, the "Why did revenue decline last month?" diagnosis with tool trace and grounding badge, and the data-quality page.
 
 ---
 
