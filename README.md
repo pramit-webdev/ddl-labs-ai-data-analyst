@@ -90,7 +90,7 @@ cp .env.example .env
 # edit .env
 LLM_PROVIDER=groq
 LLM_API_KEY=gsk_...
-LLM_MODEL=llama-3.3-70b-versatile   # optional; provider default is used if blank
+LLM_MODEL=qwen/qwen3.8-27b   # optional; provider default is used if blank
 ```
 
 Supported OpenAI-compatible providers: `groq`, `nvidia`, `openai`, `openrouter`, `custom` (set `LLM_BASE_URL`), and `offline`.
@@ -264,7 +264,7 @@ The recording shows the running application: overview dashboard, period switchin
 | Candidate Name | Pramit Das |
 | GitHub Repository | https://github.com/pramit-webdev/ddl-labs-ai-data-analyst |
 | Demo Video | See section 10 |
-| LLM Used | Groq `llama-3.3-70b-versatile` via OpenAI-compatible tool calling (automatic verified-offline fallback when no key is configured) |
+| LLM Used | Groq `qwen/qwen3.8-27b` via OpenAI-compatible tool calling (automatic verified-offline fallback when no key is configured) |
 | Database Used | SQLite (`data/warehouse.db`) built from deterministic raw CSVs by `app/ingest.py` |
 | Main Technologies | Python 3.12, FastAPI, SQLite, pandas/numpy, OpenAI-compatible tool calling, Playwright, vanilla HTML/CSS/JS, Chart.js |
 | Known Limitations | Synthetic dataset; no profit/inventory/forecast data; revenue excludes shipping and taxes; external market benchmarks unsupported |

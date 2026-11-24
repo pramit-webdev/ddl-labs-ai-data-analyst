@@ -13,7 +13,7 @@ load_dotenv(ROOT_DIR / ".env")
 
 PROVIDER_DEFAULTS: dict[str, tuple[str, str]] = {
     # provider: (base_url, default_model)
-    "groq": ("https://api.groq.com/openai/v1", "llama-3.3-70b-versatile"),
+    "groq": ("https://api.groq.com/openai/v1", "qwen/qwen3.8-27b"),
     "nvidia": (
         "https://integrate.api.nvidia.com/v1",
         "meta/llama-3.3-70b-instruct",

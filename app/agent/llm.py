@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import time
 from dataclasses import dataclass, field
 from typing import Any
@@ -52,6 +53,16 @@ def _content_to_text(content: Any) -> str:
     return str(content).strip()
 
 
+def _retry_delay(response: httpx.Response) -> float:
+    """Respect provider rate-limit reset hints instead of blindly retrying."""
+    header = response.headers.get("retry-after") or response.headers.get("x-ratelimit-reset-tokens") or ""
+    match = re.search(r"(?:(\d+)m)?([\d.]+)s", header)
+    if match:
+        seconds = float(match.group(2)) + (int(match.group(1) or 0) * 60)
+        return min(35.0, max(1.0, seconds + 1.0))
+    return 1.6
+
+
 class LLMClient:
     def __init__(self, cfg: Settings = settings):
         self.cfg = cfg
@@ -97,7 +108,8 @@ class LLMClient:
                 with httpx.Client(timeout=timeout) as client:
                     response = client.post(url, headers=headers, json=payload)
                 if response.status_code in {429, 500, 502, 503, 504} and attempt < 2:
-                    time.sleep(0.8 * (2**attempt))
+                    wait = _retry_delay(response)
+                    time.sleep(wait)
                     last_error = LLMError(
                         f"Provider returned HTTP {response.status_code}.",
                         status_code=response.status_code,

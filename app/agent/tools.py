@@ -117,162 +117,76 @@ def _schema(properties: dict[str, Any], required: list[str] | None = None) -> di
     }
 
 
-_PERIOD = {"type": "string", "enum": list(PeriodKey.__args__), "description": "Reporting period relative to the latest data."}
+_PERIOD = {"type": "string", "enum": list(PeriodKey.__args__)}
+_INT = {"type": "integer", "minimum": 1, "maximum": 20}
+
+
+def _tool(name: str, description: str, properties: dict[str, Any], required: list[str] | None = None) -> dict[str, Any]:
+    return {
+        "type": "function",
+        "function": {
+            "name": name,
+            "description": description,
+            "parameters": _schema(properties, required),
+        },
+    }
+
 
 TOOL_SCHEMAS: list[dict[str, Any]] = [
-    {
-        "type": "function",
-        "function": {
-            "name": "get_sales_metrics",
-            "description": "Headline revenue, order count, purchasing customers and average order value for a period, with comparison to the previous period.",
-            "parameters": _schema({"period": _PERIOD}),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_monthly_revenue",
-            "description": "Monthly revenue, orders, units and AOV for the last N months (3-24). Use for trends over time.",
-            "parameters": _schema({"months": {"type": "integer", "minimum": 3, "maximum": 24, "default": 12}}),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_revenue_by_category",
-            "description": "Revenue, units, orders and share of revenue for every product category in a period.",
-            "parameters": _schema({"period": _PERIOD}),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_top_products",
-            "description": "Top products ranked by revenue or units for a period. Use for 'best-selling' or 'highest-revenue products'.",
-            "parameters": _schema({
-                "metric": {"type": "string", "enum": ["revenue", "units"], "default": "revenue"},
-                "limit": {"type": "integer", "minimum": 1, "maximum": 20, "default": 5},
-                "period": _PERIOD,
-            }),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_low_performing_products",
-            "description": "Active products with the lowest revenue/units in a period, including products with zero sales.",
-            "parameters": _schema({
-                "limit": {"type": "integer", "minimum": 1, "maximum": 20, "default": 5},
-                "period": _PERIOD,
-            }),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_customer_metrics",
-            "description": "Total, purchasing, active, inactive, new and repeat customers; repeat rate and average orders per customer.",
-            "parameters": _schema({
-                "inactive_days": {"type": "integer", "minimum": 1, "maximum": 730, "default": 90},
-            }),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_inactive_customers",
-            "description": "List customers who have not purchased in the last N days, highest lifetime revenue first.",
-            "parameters": _schema({
-                "inactive_days": {"type": "integer", "minimum": 1, "maximum": 730, "default": 90},
-                "limit": {"type": "integer", "minimum": 1, "maximum": 50, "default": 10},
-            }),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_top_customers",
-            "description": "Top customers ranked by revenue for a period.",
-            "parameters": _schema({
-                "limit": {"type": "integer", "minimum": 1, "maximum": 20, "default": 5},
-                "period": _PERIOD,
-            }),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_customer_trend",
-            "description": "Monthly new vs returning customers and revenue for the last N months.",
-            "parameters": _schema({"months": {"type": "integer", "minimum": 3, "maximum": 24, "default": 12}}),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_payment_mix",
-            "description": "Revenue and order share by Indian payment method (UPI, cards, COD, net banking, wallet) for a period.",
-            "parameters": _schema({"period": _PERIOD}),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_city_tier_mix",
-            "description": "Revenue, orders and customer counts by Indian city tier (Tier 1 metro, Tier 2, Tier 3, International).",
-            "parameters": _schema({"period": _PERIOD}),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_channel_performance",
-            "description": "Revenue, orders, customers and AOV by sales channel (Website, Mobile App, Marketplace, WhatsApp, Retail Store).",
-            "parameters": _schema({"period": _PERIOD}),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_top_states",
-            "description": "Top Indian states by revenue for a period.",
-            "parameters": _schema({
-                "period": _PERIOD,
-                "limit": {"type": "integer", "minimum": 1, "maximum": 20, "default": 8},
-            }),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_revenue_decline_analysis",
-            "description": "Multi-step root-cause analysis for a revenue decline: revenue, orders, AOV, volume/AOV decomposition, category, product, channel, segment and customer activity drivers. Use for 'why did revenue decline'.",
-            "parameters": _schema({"month": {"type": "string", "pattern": "^\\d{4}-\\d{2}$", "description": "Optional YYYY-MM month; defaults to the latest month."}}),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "generate_chart",
-            "description": "Build a chart specification from the real dataset for monthly revenue, revenue by category, top products or customer trends.",
-            "parameters": _schema({
-                "chart_type": {"type": "string", "enum": ["line", "bar", "doughnut"], "default": "line"},
-                "metric": {"type": "string", "enum": list(ChartMetric.__args__), "default": "monthly_revenue"},
-                "period": _PERIOD,
-                "months": {"type": "integer", "minimum": 3, "maximum": 24, "default": 12},
-                "limit": {"type": "integer", "minimum": 1, "maximum": 20, "default": 8},
-            }),
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "query_data",
-            "description": "Read-only SQL over curated tables/views. Use only for questions the purpose-built tools cannot answer. SELECT/WITH only; a LIMIT is enforced.",
-            "parameters": _schema({"sql": {"type": "string", "description": "A single SQLite SELECT statement over allowed tables/views."}}, ["sql"]),
-        },
-    },
+    _tool("get_sales_metrics", "Revenue, orders, purchasing customers and AOV for a period.", {"period": _PERIOD}),
+    _tool("get_monthly_revenue", "Monthly revenue, orders and AOV for the last N months.", {
+        "months": {"type": "integer", "minimum": 3, "maximum": 24, "default": 12}}),
+    _tool("get_revenue_by_category", "Category revenue, units and share for a period.", {"period": _PERIOD}),
+    _tool("get_top_products", "Top products by revenue or units.", {
+        "metric": {"type": "string", "enum": ["revenue", "units"], "default": "revenue"},
+        "limit": _INT, "period": _PERIOD}),
+    _tool("get_low_performing_products", "Lowest-revenue active products.", {"limit": _INT, "period": _PERIOD}),
+    _tool("get_customer_metrics", "Customer counts, repeat rate and inactive customers.", {
+        "inactive_days": {"type": "integer", "minimum": 1, "maximum": 730, "default": 90}}),
+    _tool("get_inactive_customers", "Lapsed customers by lifetime value.", {
+        "inactive_days": {"type": "integer", "minimum": 1, "maximum": 730, "default": 90},
+        "limit": {"type": "integer", "minimum": 1, "maximum": 50, "default": 10}}),
+    _tool("get_top_customers", "Top customers by revenue.", {"limit": _INT, "period": _PERIOD}),
+    _tool("get_customer_trend", "Monthly new vs returning customers.", {
+        "months": {"type": "integer", "minimum": 3, "maximum": 24, "default": 12}}),
+    _tool("get_payment_mix", "Revenue share by Indian payment method.", {"period": _PERIOD}),
+    _tool("get_city_tier_mix", "Revenue by Tier 1/2/3 and international cities.", {"period": _PERIOD}),
+    _tool("get_channel_performance", "Revenue and AOV by sales channel.", {"period": _PERIOD}),
+    _tool("get_top_states", "Top Indian states by revenue.", {"period": _PERIOD, "limit": _INT}),
+    _tool("get_revenue_decline_analysis", "Multi-step root-cause analysis: orders vs AOV, category/product/channel/payment/tier/state drivers and calendar context.", {
+        "month": {"type": "string", "pattern": "^\\d{4}-\\d{2}$"}}),
+    _tool("generate_chart", "Build a chart spec from real data.", {
+        "chart_type": {"type": "string", "enum": ["line", "bar", "doughnut"], "default": "line"},
+        "metric": {"type": "string", "enum": list(ChartMetric.__args__), "default": "monthly_revenue"},
+        "period": _PERIOD,
+        "months": {"type": "integer", "minimum": 3, "maximum": 24, "default": 12},
+        "limit": _INT}),
+    _tool("query_data", "Read-only SELECT/WITH over allowed tables; LIMIT enforced.", {
+        "sql": {"type": "string", "description": "A single SQLite SELECT statement."}}, ["sql"]),
 ]
+
+
+def _compact_value(value: Any, list_limit: int = 4) -> Any:
+    """Shrink verbose tool payloads while keeping every scalar fact."""
+    if isinstance(value, dict):
+        return {key: _compact_value(item, list_limit) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        kept = [_compact_value(item, list_limit) for item in value[:list_limit]]
+        if len(value) > list_limit:
+            kept.append(f"... {len(value) - list_limit} more rows (see summary)")
+        return kept
+    if isinstance(value, str) and len(value) > 260:
+        return value[:260] + "..."
+    return value
+
+
+def compact_for_llm(data: Any, limit: int = 4800) -> str:
+    """Serialize a tool result for the model without exceeding provider TPM."""
+    for list_limit in (4, 3, 2, 1):
+        payload = json.dumps(_compact_value(data, list_limit), default=str)
+        if len(payload) <= limit:
+            return payload
+    return json.dumps(_compact_value(data, 1), default=str)[:limit] + "... [truncated]"
 
 
 @dataclass
@@ -304,10 +218,12 @@ class ToolOutcome:
             "data": self.data,
         }
         if self.chart:
-            payload["chart"] = self.chart
+            # The chart spec is already part of data for generate_chart.
+            if self.name != "generate_chart":
+                payload["chart"] = self.chart
         if self.error:
             payload["error"] = self.error
-        return json.dumps(payload, default=str)
+        return compact_for_llm(payload)
 
 
 class ToolRegistry:
