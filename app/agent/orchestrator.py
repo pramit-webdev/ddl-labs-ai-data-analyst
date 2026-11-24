@@ -143,7 +143,10 @@ class AgentOrchestrator:
         for step in range(max(1, self.cfg.llm_max_steps)):
             response = self.llm.chat(
                 messages,
-                tools=self.registry.schemas(),
+                # Tool schemas are large. Send them once; the follow-up call only
+                # needs the tool result to write the answer. This keeps the whole
+                # loop inside small free-tier input-token budgets.
+                tools=self.registry.schemas() if step == 0 else None,
                 temperature=0.1,
                 max_tokens=1400,
             )
