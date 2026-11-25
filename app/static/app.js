@@ -261,17 +261,26 @@
   }
 
   // --------------------------------------------------------------------- overview
+  const KPI_ICONS = {
+    revenue: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M14 7h7v7"/></svg>',
+    orders: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+    aov: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8H9.5a2.5 2.5 0 0 0 0 5H14a2.5 2.5 0 0 1 0 5H8"/><path d="M12 6v12"/></svg>',
+    customers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  };
   function renderKPIs(kpis) {
     const defs = [
-      { key: "revenue", label: "Net revenue", format: (v) => fmtINR(v), delta: "pct" },
-      { key: "orders", label: "Completed orders", format: (v) => fmtNum(v), delta: "pct" },
-      { key: "aov", label: "Average order value", format: (v) => fmtINR(v), delta: "pct" },
-      { key: "customers", label: "Purchasing customers", format: (v) => fmtNum(v), delta: "pct" },
+      { key: "revenue", label: "Net revenue", format: (v) => fmtINR(v) },
+      { key: "orders", label: "Completed orders", format: (v) => fmtNum(v) },
+      { key: "aov", label: "Average order value", format: (v) => fmtINR(v) },
+      { key: "customers", label: "Purchasing customers", format: (v) => fmtNum(v) },
     ];
     $("#kpi-grid").innerHTML = defs.map((def) => {
       const item = kpis.kpis[def.key] || {};
       return `<article class="kpi-card">
-        <div class="kpi-label">${def.label}</div>
+        <div class="kpi-head">
+          <div class="kpi-label">${def.label}</div>
+          <div class="kpi-icon">${KPI_ICONS[def.key]}</div>
+        </div>
         <div class="kpi-value">${def.format(item.value)}</div>
         <div class="kpi-foot">
           ${deltaChip(item.delta_pct, "pct")}

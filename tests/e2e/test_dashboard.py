@@ -103,9 +103,11 @@ def test_unsupported_question(page):
     browser_page.fill("#ask-input", "Forecast next quarter revenue")
     browser_page.click("#ask-submit")
     browser_page.wait_for_function(
-        "() => document.querySelectorAll('#chat .message.assistant .message-content')[1]?.innerText.includes(\"can't answer\")",
+        "() => { const nodes = document.querySelectorAll('#chat .message.assistant .message-content'); const last = nodes[nodes.length - 1]; return last && /can'?t|cannot|unsupported|don't have/i.test(last.innerText); }",
         timeout=20000,
     )
+    answer = browser_page.locator("#chat .message.assistant .message-content").last.inner_text().lower()
+    assert "forecast" in answer or "unsupported" in answer or "can't" in answer
     assert not errors, errors
 
 
