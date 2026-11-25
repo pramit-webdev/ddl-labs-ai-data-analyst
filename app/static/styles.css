@@ -48,12 +48,13 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "cv02", "cv03", "cv04", "ss01";
 }
 
 h1, h2, h3, p { margin-top: 0; }
-h1 { font-size: clamp(1.5rem, 2.2vw, 2rem); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.5rem; font-weight: 600; }
-h2 { font-size: 1.15rem; letter-spacing: -0.02em; margin-bottom: 0.2rem; font-weight: 600; }
-h3 { font-size: 0.98rem; letter-spacing: -0.01em; margin-bottom: 0.15rem; font-weight: 600; }
+h1 { font-size: clamp(1.5rem, 2.2vw, 2rem); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.5rem; font-weight: 500; }
+h2 { font-size: 1.15rem; letter-spacing: -0.02em; margin-bottom: 0.2rem; font-weight: 500; }
+h3 { font-size: 0.98rem; letter-spacing: -0.01em; margin-bottom: 0.15rem; font-weight: 500; }
 p { color: var(--ink-2); }
 a { color: var(--primary); text-decoration: none; transition: color var(--transition); }
 a:hover { color: var(--primary-deep); }
@@ -285,7 +286,7 @@ main { padding: 24px 28px 52px; max-width: 1520px; margin: 0 auto; }
 }
 .kpi-icon svg { width: 18px; height: 18px; }
 .kpi-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; }
-.kpi-value { font-size: clamp(1.35rem, 2vw, 1.75rem); font-weight: 600; letter-spacing: -0.04em; margin: 10px 0 8px; line-height: 1.1; color: var(--ink); }
+.kpi-value { font-size: clamp(1.35rem, 2vw, 1.75rem); font-weight: 600; letter-spacing: -0.04em; margin: 10px 0 8px; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
 .kpi-foot { display: flex; align-items: center; gap: 8px; margin-top: auto; flex-wrap: wrap; }
 .kpi-previous { font-size: 0.74rem; color: var(--muted); font-weight: 600; }
 
@@ -322,7 +323,7 @@ main { padding: 24px 28px 52px; max-width: 1520px; margin: 0 auto; }
 .narrative strong { color: var(--ink); }
 .customer-health { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .health-item { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
-.health-value { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.03em; }
+.health-value { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
 .health-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; }
 .health-bar { height: 6px; border-radius: 99px; background: #e2e8f0; overflow: hidden; margin-top: 8px; }
 .health-bar span { display: block; height: 100%; border-radius: 99px; }

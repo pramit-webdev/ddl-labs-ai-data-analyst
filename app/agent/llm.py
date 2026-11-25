@@ -80,6 +80,7 @@ class LLMClient:
         messages: list[dict[str, Any]],
         *,
         tools: list[dict[str, Any]] | None = None,
+        tool_choice: str | None = None,
         temperature: float = 0.1,
         max_tokens: int = 1100,
     ) -> LLMResponse:
@@ -94,7 +95,7 @@ class LLMClient:
         }
         if tools:
             payload["tools"] = tools
-            payload["tool_choice"] = "auto"
+            payload["tool_choice"] = tool_choice or "auto"
         headers = {
             "Authorization": f"Bearer {self.cfg.llm_api_key}",
             "Content-Type": "application/json",

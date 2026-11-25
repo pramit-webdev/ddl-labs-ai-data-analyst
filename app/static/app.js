@@ -205,6 +205,7 @@
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        font: { family: "Plus Jakarta Sans, Inter, system-ui, sans-serif", size: 12 },
         indexAxis: horizontal ? "y" : "x",
         interaction: { intersect: false, mode: "index" },
         plugins: {

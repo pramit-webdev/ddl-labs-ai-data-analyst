@@ -21,8 +21,18 @@ from app.agent.tools import ToolOutcome, ToolRegistry
 from app.analytics import AnalyticsService, money, num
 from app.config import Settings, settings
 
-SYSTEM_PROMPT = """You are Atlas, the AI business analyst for BharatCart Retail, an Indian e-commerce company. Reporting anchor: {as_of}. All periods are relative to that date, not the wall clock. "Last month" and "latest month" always mean the most recent completed month present in the warehouse ({latest_month}), never the calendar month before the as-of date.
 
+
+
+def _strip_tool_call_markup(text: str | None) -> str:
+    if not text:
+        return ""
+    if "<tool_call>" in text or "<function=" in text or "<parameter" in text:
+        return ""
+    return text.strip()
+
+
+SYSTEM_PROMPT = """You are Atlas, the AI business analyst for BharatCart Retail, an Indian e-commerce company. Reporting anchor: {as_of}. All periods are relative to that date, not the wall clock. "Last month" and "latest month" always mean the most recent completed month present in the warehouse ({latest_month}), never the calendar month before the as-of date.
 Money is Indian Rupees (₹). Revenue = net product revenue from completed orders: quantity × unit_price × (1 − discount%). Shipping and taxes are excluded; cancelled, returned and pending orders are excluded. Indian calendar: October-November is the Diwali peak, September is the pre-festive Shradh lull, June-July is monsoon.
 
 Tools are your only data source. Always call at least one tool before answering. Never rely on memory or invent a figure. For "why revenue declined", call get_revenue_decline_analysis and explain the root cause, not just the size. For payment, city-tier, channel or state questions, call the matching tool. For a visual, call generate_chart. Use query_data only when no purpose-built tool fits.
@@ -146,10 +156,9 @@ class AgentOrchestrator:
         for step in range(max(1, self.cfg.llm_max_steps)):
             response = self.llm.chat(
                 messages,
-                # Tool schemas are large. Send them once; the follow-up call only
-                # needs the tool result to write the answer. This keeps the whole
-                # loop inside small free-tier input-token budgets.
-                tools=self.registry.schemas() if step == 0 else None,
+                # Send schemas only before a tool result exists. After a result,
+                # qwen can emit textual tool calls unless tools are omitted.
+                tools=self.registry.schemas() if not outcomes else None,
                 temperature=0.1,
                 max_tokens=1400,
             )
@@ -184,10 +193,22 @@ class AgentOrchestrator:
                             "content": outcome.to_llm_payload(),
                         }
                     )
+                messages.append(
+                    {
+                        "role": "user",
+                        "content": (
+                            "You now have the verified tool result. Answer the original "
+                            "question in Markdown using only figures from that result. "
+                            "Do not call any more tools and do not repeat tool-call markup."
+                        ),
+                    }
+                )
                 continue
 
-            answer = (response.content or "").strip()
+            answer = _strip_tool_call_markup(response.content)
             if not answer:
+                if outcomes:
+                    break
                 messages.append(
                     {
                         "role": "user",
