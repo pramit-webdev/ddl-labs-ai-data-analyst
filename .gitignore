@@ -37,3 +37,6 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
+# Large local demo artifacts
+demo_walkthrough.mp4
