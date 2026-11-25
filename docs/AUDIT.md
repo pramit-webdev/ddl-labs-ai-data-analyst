@@ -45,6 +45,12 @@ Audit against `DDL Labs Technical Assignment 1.pdf` (read 2026-11-25).
 - Browser E2E verified overview, period switching, grounded chat, chart, quality page, unsupported question and mobile layout.
 - Docker image builds and container serves `/api/health`.
 
+## UI/UX and demo improvements
+
+- Redesigned the dashboard with a modern card system, KPI icons, gradients, responsive layout and improved chat styling.
+- Replaced the demo with a narrated 63-second walkthrough showing the live Groq tool-calling path, tool trace, grounding badge and data-quality page.
+- Updated screenshots to reflect the redesigned UI.
+
 ## Known limitations
 
 - Synthetic dataset, not real company data.
