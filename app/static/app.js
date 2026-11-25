@@ -292,10 +292,9 @@
 
   function productRows(rows) {
     if (!rows || !rows.length) return `<tr><td colspan="5" class="empty-cell">No sales in this period.</td></tr>`;
-    const max = Math.max.apply(null, rows.map((r) => Number(r.revenue) || 0)) || 1;
     return rows.map((r) => `<tr>
       <td class="rank">${r.rank}</td>
-      <td><strong>${escapeHtml(r.name)}</strong><span class="mini-bar"><span style="width:${Math.max(3, (r.revenue / max) * 100)}%"></span></span></td>
+      <td><strong>${escapeHtml(r.name)}</strong></td>
       <td>${escapeHtml(r.category)}</td>
       <td class="num">${fmtINR(r.revenue)}</td>
       <td class="num">${fmtNum(r.units)}</td>
@@ -304,10 +303,9 @@
 
   function stateRows(rows) {
     if (!rows || !rows.length) return `<tr><td colspan="4" class="empty-cell">No state-level sales.</td></tr>`;
-    const max = Math.max.apply(null, rows.map((r) => Number(r.revenue) || 0)) || 1;
     return rows.map((r) => `<tr>
       <td class="rank">${r.rank}</td>
-      <td><strong>${escapeHtml(r.state)}</strong><span class="mini-bar"><span style="width:${Math.max(3, (r.revenue / max) * 100)}%"></span></span></td>
+      <td><strong>${escapeHtml(r.state)}</strong></td>
       <td class="num">${fmtINR(r.revenue)}</td>
       <td class="num">${fmtNum(r.orders)}</td>
     </tr>`).join("");

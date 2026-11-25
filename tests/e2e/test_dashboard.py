@@ -34,7 +34,7 @@ def page(browser):
 
 def test_overview_renders_real_metrics(page):
     browser_page, errors = page
-    assert browser_page.locator("h1#overview-title").inner_text() == "Namaste. Here is the business."
+    assert browser_page.locator("h1#overview-title").inner_text() == "Business overview"
     values = browser_page.locator("#kpi-grid .kpi-value").all_inner_texts()
     assert len(values) == 4
     assert any("₹" in value for value in values)
